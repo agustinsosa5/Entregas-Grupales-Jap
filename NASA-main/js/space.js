@@ -49,10 +49,9 @@ async function showitems(){
 
 
     //Busca y muestra la info    
-    btbuscar.addEventListener("click",()=> {    
-        if (buscador != "") {
+    btbuscar.addEventListener("click",()=> {          
             showitems();        
-        }    
+       
     });
     
         
