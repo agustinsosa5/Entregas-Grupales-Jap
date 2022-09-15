@@ -16,7 +16,7 @@ async function getBusqueda(){
     alert("error");
 };
 
-
+prueba
 
 //mostrar en HTML
 async function showitems(){
