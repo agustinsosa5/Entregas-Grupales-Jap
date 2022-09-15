@@ -4,25 +4,28 @@
 //description  descripcion de la imgane. 
 //title titulo de la imagen. 
 let buscador = document.getElementById("inputBuscar").value;
-var URL = `https://images-api.nasa.gov/search?q=${buscador}`;
+let URL = `https://images-api.nasa.gov/search?q=${buscador}`;
+const btbuscar = document.getElementById("btnBuscar");
 
 
 //fetch
 async function getBusqueda(){
     const response = await fetch(URL);
     if (response.ok) {
-        return await response.json();
+       const data = await response.json();
+       return data;
     }
     alert("error");
 };
 
-prueba
+
 
 //mostrar en HTML
 async function showitems(){
     let imprimirHTML= " ";   
     let info = await getBusqueda();
     info.forEach(element => {
+        console.log(element);
         imprimirHTML += 
         `<div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
@@ -45,14 +48,13 @@ async function showitems(){
 
 
 
-    //Busca y muestra la info
-    function buscar(){
-    document.getElementById("btnBuscar").addEventListener("click",()=> {    
+    //Busca y muestra la info    
+    btbuscar.addEventListener("click",()=> {    
         if (buscador != "") {
-        showitems();        
+            showitems();        
         }    
     });
-    };
+    
         
 
     // AHI ORDENE UN POCO EL CODIGO , QUE TE PARECE??? CREO QUE VAMOS A A TENER ERRORES
