@@ -4,7 +4,7 @@
 //description  descripcion de la imgane. 
 //title titulo de la imagen. 
 let buscador = document.getElementById("inputBuscar").value;
-let URL = `https://images-api.nasa.gov/search?q=${buscador}`;
+let URL = `https://images-api.nasa.gov/search?q=jupiter`;
 const btbuscar = document.getElementById("btnBuscar");
 
 
@@ -24,25 +24,26 @@ async function getBusqueda(){
 async function showitems(){
     let imprimirHTML= " ";   
     let info = await getBusqueda();
-    info.forEach(element => {
-        console.log(element);
+    console.log(info);
+    
+       
         imprimirHTML += 
         `<div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
         <div class="col-md-4">
-        <img src=${element.items} class="img-fluid rounded-start" alt="...">
+        <img src=${info.collection.href} class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
         <div class="card-body">
-        <h5 class="card-title">${element.title}</h5>
-        <p class="card-text">${element.description}</p>
-        <footer class="card-text"><small class="text-muted">${element.date_created} </small></footer>
+        <h5 class="card-title">${info.collection.title}</h5>
+        <p class="card-text">${info.collection.description}</p>
+        <footer class="card-text"><small class="text-muted">${info.collection.date_created} </small></footer>
         </div>
         </div>
         </div>
          </div>`
          document.getElementById("contenedor").innerHTML = imprimirHTML;   
-    });           
+             
     };
     
 
